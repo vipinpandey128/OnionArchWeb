@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace Persistence.Configurations
 {
-    internal sealed class AccountConfiguration : IEntityTypeConfiguration<Account>
+    internal sealed class AccountConfiguration : IEntityTypeConfiguration<User>
     {
-        public void Configure(EntityTypeBuilder<Account> builder)
+        public void Configure(EntityTypeBuilder<User> builder)
         {
-            builder.ToTable(nameof(Account));
+            builder.ToTable(nameof(User));
 
             builder.HasKey(account => account.Id);
 
@@ -21,7 +21,7 @@ namespace Persistence.Configurations
 
             builder.Property(account => account.AccountType).HasMaxLength(50);
 
-            builder.Property(account => account.DateCreated).IsRequired();
+           // builder.Property(account => account.DateCreated).IsRequired();
         }
     }
 }
