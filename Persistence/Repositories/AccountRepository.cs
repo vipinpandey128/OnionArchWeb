@@ -11,14 +11,14 @@ namespace Persistence.Repositories
 
         public AccountRepository(RepositoryDbContext dbContext) => _dbContext = dbContext;
 
-        public async Task<IEnumerable<Account>> GetAllByOwnerIdAsync(Guid ownerId, CancellationToken cancellationToken = default) =>
-            await _dbContext.Accounts.Where(x => x.OwnerId == ownerId).ToListAsync(cancellationToken);
+        public async Task<IEnumerable<User>> GetAllByOwnerIdAsync(CancellationToken cancellationToken = default) =>
+            await _dbContext.Accounts.ToListAsync(cancellationToken);
 
-        public async Task<Account> GetByIdAsync(Guid accountId, CancellationToken cancellationToken = default) =>
+        public async Task<User> GetByIdAsync(Guid accountId, CancellationToken cancellationToken = default) =>
             await _dbContext.Accounts.FirstOrDefaultAsync(x => x.Id == accountId, cancellationToken);
 
-        public void Insert(Account account) => _dbContext.Accounts.Add(account);
+        public void Insert(User account) => _dbContext.Accounts.Add(account);
 
-        public void Remove(Account account) => _dbContext.Accounts.Remove(account);
+        public void Remove(User account) => _dbContext.Accounts.Remove(account);
     }
 }

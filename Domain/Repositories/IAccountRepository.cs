@@ -9,12 +9,12 @@ namespace Domain.Repositories
 {
     public interface IAccountRepository
     {
-        Task<IEnumerable<Account>> GetAllByOwnerIdAsync(Guid ownerId, CancellationToken cancellationToken = default);
+        Task<IEnumerable<User>> GetAllByOwnerIdAsync(CancellationToken cancellationToken = default);
 
-        Task<Account> GetByIdAsync(Guid accountId, CancellationToken cancellationToken = default);
+        Task<User> GetByIdAsync(Guid accountId, CancellationToken cancellationToken = default);
 
-        void Insert(Account account);
+        void Insert(User account);
 
-        void Remove(Account account);
+        void Remove(User account);
     }
 }
