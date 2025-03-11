@@ -21,7 +21,6 @@ namespace Persistence.Configurations
 
             builder.Property(account => account.AccountType).HasMaxLength(50);
 
-           // builder.Property(account => account.DateCreated).IsRequired();
         }
     }
 }
