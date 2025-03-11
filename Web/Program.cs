@@ -56,6 +56,8 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+app.MapGet("/", () => "Secure DB Connection Initiaization");
+
 await app.RunAsync();
 
 
