@@ -28,7 +28,7 @@ if (string.IsNullOrEmpty(dbPassword))
     throw new Exception("Database password is not set in environment variables (DB_PASSWORD)");
 }
 
-var finalConnectionString = baseConnectionString.Replace("_SECRET_PLACEHOLDER_", dbPassword);
+var finalConnectionString = $"{baseConnectionString}Password={dbPassword};";
 
 
 builder.Services.AddDbContext<RepositoryDbContext>(options =>
