@@ -25,7 +25,8 @@ var dbPassword = Environment.GetEnvironmentVariable("DB_PASSWORD");
 
 if (string.IsNullOrEmpty(dbPassword))
 {
-    throw new Exception("Database password is not set in environment variables (DB_PASSWORD)");
+    Console.WriteLine("Critical: DB_PASSWORD environment variable is missing.");
+    throw new InvalidOperationException("Database password is not set in environment variables (DB_PASSWORD)");
 }
 
 var finalConnectionString = $"{baseConnectionString}Password={dbPassword};";
