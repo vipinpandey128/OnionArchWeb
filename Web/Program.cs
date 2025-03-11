@@ -9,8 +9,7 @@ using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddControllers()
-        .AddApplicationPart(typeof(Presentation.AssemblyReference).Assembly);
+builder.Services.AddControllers();
 
 builder.Services.AddSwaggerGen(c =>
         c.SwaggerDoc("v1", new OpenApiInfo { Title = "Web", Version = "v1" }));
