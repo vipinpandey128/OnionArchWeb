@@ -19,8 +19,20 @@ builder.Services.AddScoped<IServiceManager, ServiceManager>();
 
 builder.Services.AddScoped<IRepositoryManager, RepositoryManager>();
 
+// Securely override password
+var baseConnectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+var dbPassword = Environment.GetEnvironmentVariable("DB_PASSWORD");
+
+if (string.IsNullOrEmpty(dbPassword))
+{
+    throw new Exception("Database password is not set in environment variables (DB_PASSWORD)");
+}
+
+var finalConnectionString = baseConnectionString.Replace("_SECRET_PLACEHOLDER_", dbPassword);
+
+
 builder.Services.AddDbContext<RepositoryDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+    options.UseSqlServer(finalConnectionString));
 
 builder.Services.AddTransient<ExceptionHandlingMiddleware>();
 
