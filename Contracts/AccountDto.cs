@@ -9,6 +9,6 @@ namespace Contracts
 
         public DateTime DateCreated { get; set; }
 
-        public string AccountType { get; set; }
+        public string? AccountType { get; set; }
     }
 }
