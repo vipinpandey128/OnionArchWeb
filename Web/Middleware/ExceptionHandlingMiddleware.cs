@@ -17,7 +17,7 @@ namespace Web.Middleware
             }
             catch (Exception e)
             {
-                _logger.LogError(e, e.Message);
+                _logger.LogError(e, "An unhandled exception occurred in {Middleware}: {ErrorMessage}", nameof(ExceptionHandlingMiddleware), e.Message);
 
                 await HandleExceptionAsync(context, e);
             }
