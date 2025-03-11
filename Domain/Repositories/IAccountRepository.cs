@@ -11,7 +11,7 @@ namespace Domain.Repositories
     {
         Task<IEnumerable<User>> GetAllByOwnerIdAsync(CancellationToken cancellationToken = default);
 
-        Task<User> GetByIdAsync(Guid accountId, CancellationToken cancellationToken = default);
+        Task<User?> GetByIdAsync(Guid accountId, CancellationToken cancellationToken = default);
 
         void Insert(User account);
 
